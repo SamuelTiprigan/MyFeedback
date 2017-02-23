@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head lang="en" th:replace="include/fragment_head :: head"></head>
+
+<body>
+	<div th:include="include/fragment_header::head"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-md-6">
+				<div class="well well-sm">
+					<div class="row">
+						<div class="col-sm-6 col-md-4">
+
+							<div class="imgContainer">
+								<img src="${imgPath}" th:src="${imgPath}"
+									class="img-rounded img-responsive" alt="Profile Picture" />
+							</div>
+
+							<div class="imgButton">
+								<br />
+								<button class="btn btn-info btn-sm" value="test">Change
+									Image</button>
+
+								<!--<label class="control-label">Select File</label> <input
+									id="input-1" th:type="file" class="file"></input>-->
+
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-8">
+
+							<h4 th:text="${name}">1</h4>
+							<br />
+
+							<p class="glyphicon glyphicon-user" th:inline="text">&nbsp;[[${username}]]</p>
+							<br />
+
+							<p class="glyphicon glyphicon-map-marker" th:inline="text">&nbsp;[[${address}]]</p>
+							<br />
+
+							<p class="glyphicon glyphicon-envelope" th:inline="text">&nbsp;[[${email}]]</p>
+							<br />
+
+							<p class="glyphicon glyphicon-earphone" th:inline="text">
+								[[${phoneNo}]]</p>
+							<br /> <br />
+
+							<!-- Trigger the modal with a button -->
+							<button type="button" class="btn btn-info btn-sm"
+								data-toggle="modal" data-target="#myModal">Edit Profile</button>
+
+							<!-- Modal -->
+							<div id="myModal" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Edit Profile</h4>
+										</div>
+
+
+										<div class="modal-body">
+											<p th:inline="text">[[${username}]]</p>
+
+											<form class="form-horizontal" role="form" method="POST"
+												th:modelAttribute="profileForm" th:object="${profileForm}"
+												th:action="@{/updateProfile}">
+
+												<input type="hidden" name="_method" value="PUT" /> <input
+													type="hidden" name="username" th:value="${username}" /> <input
+													type="hidden" name="imgPath" th:value="${imgPath}" />
+
+
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="name">Full
+														Name</label>
+													<div class="col-sm-10">
+														<input type="text" class="form-control"
+															placeholder="Full Name" th:value="${name}" name="name" />
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="address">Address</label>
+													<div class="col-sm-10">
+														<input type="text" class="form-control"
+															placeholder="Address" th:value="${address}"
+															name="address" />
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="email">Email</label>
+													<div class="col-sm-10">
+														<input type="email" class="form-control"
+															placeholder="Email" th:value="${email}" name="email" />
+													</div>
+												</div>
+
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="phoneNo">Phone
+														Number</label>
+													<div class="col-sm-10">
+														<input type="text" class="form-control"
+															placeholder="Phone Number" th:value="${phoneNo}"
+															name="phoneNo" />
+													</div>
+												</div>
+
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-10">
+														<button type="submit" class="btn btn-default">Save
+															Changes</button>
+													</div>
+												</div>
+											</form>
+
+										</div>
+
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">Close</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:include="include/fragment_footer::head"></div>
+
+</body>
+</html>

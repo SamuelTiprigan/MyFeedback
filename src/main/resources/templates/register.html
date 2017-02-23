@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head lang="en" th:replace="include/fragment_head :: head"></head>
+
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6">
+				<br />
+
+				<div th:if="${param.error}">
+					<div class="panel panel-danger">
+						<div class="panel-heading">Invalid email !</div>
+					</div>
+				</div>
+
+				<form class="center-block form-register"
+					th:modelAttribute="userForm" th:object="${userForm}"
+					th:action="@{/registration}" method="POST">
+
+					<h4>Please Register.</h4>
+
+					<input type="text" id="email"
+						class="form-control input-sm chat-input" name="email"
+						placeholder="email" th:required="required" /> 
+					
+					<input type="text"
+						id="userName" class="form-control input-sm chat-input" name="name"
+						placeholder="Name Surname" th:required="required" /> 
+					
+					<input type="text" class="form-control input-sm chat-input"
+						name="address" placeholder="Address"
+						th:required="required" />
+						
+					<input type="text" class="form-control input-sm chat-input"
+						name="phoneNo" placeholder="Phone Number"
+						th:required="required" />
+					
+					
+					<input
+						type="password" class="form-control input-sm chat-input"
+						name="password" placeholder="password" th:required="required" />
+
+					<input type="password" class="form-control input-sm chat-input"
+						name="passwordRepeated" placeholder="Confirm Password"
+						th:required="required" /> 
+					
+					
+					<input class="btn btn-primary btn-md"
+						type="submit" value="Register" /> <a th:href="@{/login}"
+						class="btn btn-info" role="button">Sign In</a>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

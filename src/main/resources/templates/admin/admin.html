@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head lang="en" th:replace="include/fragment_head :: head"></head>
+
+<!--  <body
+	th:if="${ #authorization.expression('isAuthenticated()') and (#strings.contains(#authentication.principal.authorities,'0') or #strings.contains(#authentication.principal.authorities,'1'))}">
+-->
+<body>
+
+	<div th:include="include/fragment_header::head"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-2 col-xs-12 col-sm-4 col-md-4 ">
+
+				<div th:include="include/fragmentAdmin_aside::adminAside"></div>
+
+			</div>
+
+			<div class="col-lg-10">
+	
+				<th:block th:switch="${command}">
+					<div th:case="'null'">
+						<div th:include="admin/include/content_command_null::null"></div>
+					</div>
+					<div th:case="'users'">
+						<div th:include="admin/include/content_command_users::users"></div>
+					</div>
+					<div th:case="'userbyId'">
+						<div th:include="admin/include/content_command_userbyId::userbyId"></div>
+					</div>
+				</th:block>
+			</div>
+		</div>
+	</div>
+
+	<div th:include="include/fragment_footer::foot"></div>
+
+</body>
+</html>

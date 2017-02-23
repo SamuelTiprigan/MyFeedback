@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head lang="en" th:replace="include/fragment_head :: head">
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6">
+				<br />
+				<div th:if="${param.error}">
+					<div class="panel panel-danger">
+						<div class="panel-heading">Invalid username and password.</div>
+					</div>
+				</div>
+
+				<div th:if="${param.logout}">
+					<div class="panel panel-danger">
+						<div class="panel-heading">You have been logged out.</div>
+					</div>
+				</div>
+
+				<form th:action="@{/login}" method="post"
+					  th:modelAttribute="loginForm" th:object="${loginForm}"
+					class="center-block form-login">
+
+					<h4>Welcome back.</h4>
+					<input type="text" id="userName"
+						class="form-control input-sm chat-input" name="username"
+						placeholder="email" th:required="required"/> 
+					<input type="password"
+						id="userPassword" class="form-control input-sm chat-input"
+						name="password" placeholder="password" th:required="required"/>
+				    <input
+						class="btn btn-primary btn-md" type="submit" value="Sign In" /> <a
+						th:href="@{/register}" class="btn btn-info" role="button">Register</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

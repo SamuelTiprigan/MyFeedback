@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head lang="en" th:replace="include/fragment_head :: head"></head>
+
+<body>
+	<div sec:authorize="hasRole('1')">This content is only shown to
+		administrators.</div>
+	<div sec:authorize="hasRole('2')">This content is only shown to
+		moderators.</div>
+	<div sec:authorize="hasRole('3')">This content is only shown to
+		users.</div>
+
+
+
+	<div
+		th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'3')}">
+		<a th:href="@{/somelink}">ADMIN LINK</a>
+		
+	</div>
+	
+	<br />
+	<br /> Logged user:
+	<span sec:authentication="name">Bob</span> Roles:
+	<span sec:authentication="principal.authorities">[ROLE_USER,
+		ROLE_ADMIN]</span>
+
+	<h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]</h1>
+
+
+</body>
+</html>

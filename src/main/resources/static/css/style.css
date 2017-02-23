@@ -1,0 +1,72 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
+.form-login, .form-register {
+	background-color: #EDEDED;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 4px;
+	border-color: #d2d2d2;
+	border-width: 5px;
+	box-shadow: 0 1px 0 #cfcfcf;
+	margin: 0 auto;
+}
+
+.form-login input, .form-register input {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+/* For logout button because it's in a form */
+.logoutForm {
+	display: block;
+	padding: 2px 20px;
+	clear: both;
+	font-weight: 400;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap;
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.logoutForm button {
+	padding: 0px;
+	background-color: transparent;
+	border-color: transparent;
+}
+
+li:hover, .logoutForm button:hover {
+	background-color: #ccc;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+}
+
+/* button from adding photo for profile*/
+.imgButton {
+	text-align: center;
+	width:100%;
+	margin:0px;
+	padding:0px;
+}
+
+.container-fluid {
+	
+}
